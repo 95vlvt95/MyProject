@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - eshop@localhost" uuid="c8f8ca67-58d8-4d8d-bed6-78cb4eea6d27">
+    <database-info product="MySQL" version="5.6.27-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="eshop"/>
+    <table name="category" schema="" catalog="eshop" type="TABLE">
+      <column name="categoryId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="categoryId"/>
+      <exported-key name="Item_FK" table="item" schema="" catalog="eshop" columns="categoryId"/>
+      <index name="CategoryNameUnique" unique="true" columns="name"/>
+      <index name="CategoryIndexByCategoryId" unique="false" columns="categoryId"/>
+      <index name="CategoryIndexByName" unique="false" columns="name"/>
+    </table>
+    <table name="item" schema="" catalog="eshop" type="TABLE">
+      <column name="itemId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="categoryId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="quantity" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5" def="MA=="/>
+      <column name="imageURL1" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12" def="J2h0dHA6Ly9yaXNlb2Z0aGVjYXN1YWxnYW1lcnMuZmlsZXMud29yZHByZXNzLmNvbS8yMDEyLzAxL2hvbWVyLXNpbXBzb24tZXJyb3ItNDA0LmdpZj93PTYyNyc="/>
+      <column name="imageURL2" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12" def="J2h0dHA6Ly9yaXNlb2Z0aGVjYXN1YWxnYW1lcnMuZmlsZXMud29yZHByZXNzLmNvbS8yMDEyLzAxL2hvbWVyLXNpbXBzb24tZXJyb3ItNDA0LmdpZj93PTYyNyc="/>
+      <column name="imageURL3" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12" def="J2h0dHA6Ly9yaXNlb2Z0aGVjYXN1YWxnYW1lcnMuZmlsZXMud29yZHByZXNzLmNvbS8yMDEyLzAxL2hvbWVyLXNpbXBzb24tZXJyb3ItNDA0LmdpZj93PTYyNyc="/>
+      <column name="imageURL4" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12" def="J2h0dHA6Ly9yaXNlb2Z0aGVjYXN1YWxnYW1lcnMuZmlsZXMud29yZHByZXNzLmNvbS8yMDEyLzAxL2hvbWVyLXNpbXBzb24tZXJyb3ItNDA0LmdpZj93PTYyNyc="/>
+      <column name="imageURL5" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12" def="J2h0dHA6Ly9yaXNlb2Z0aGVjYXN1YWxnYW1lcnMuZmlsZXMud29yZHByZXNzLmNvbS8yMDEyLzAxL2hvbWVyLXNpbXBzb24tZXJyb3ItNDA0LmdpZj93PTYyNyc="/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="itemId"/>
+      <foreign-key name="Item_FK" columns="categoryId" ref-table="category" ref-schema="" ref-catalog="eshop" ref-columns="categoryId" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="OrderedItemItem_FK" table="ordereditem" schema="" catalog="eshop" columns="itemId"/>
+      <index name="ItemNameUnique" unique="true" columns="name"/>
+      <index name="Item_FK" unique="false" columns="categoryId"/>
+      <index name="ItemIndexByItemId" unique="false" columns="itemId"/>
+      <index name="ItemIndexByName" unique="false" columns="name"/>
+    </table>
+    <table name="ordereditem" schema="" catalog="eshop" type="TABLE">
+      <column name="orderedItemId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="itemId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="userOrderId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="amount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="orderedItemId"/>
+      <foreign-key name="OrderedItemItem_FK" columns="itemId" ref-table="item" ref-schema="" ref-catalog="eshop" ref-columns="itemId" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="OrderedItemUserOrder_FK" columns="userOrderId" ref-table="userorder" ref-schema="" ref-catalog="eshop" ref-columns="userOrderId" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="OrderedItemIndexByOrderedItemId" unique="false" columns="orderedItemId"/>
+      <index name="OrderedItemItem_FK" unique="false" columns="itemId"/>
+      <index name="OrderedItemUserOrder_FK" unique="false" columns="userOrderId"/>
+    </table>
+    <table name="userorder" schema="" catalog="eshop" type="TABLE">
+      <column name="userOrderId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="userId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="date" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="userOrderId"/>
+      <foreign-key name="Order_FK" columns="userId" ref-table="users" ref-schema="" ref-catalog="eshop" ref-columns="userId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="OrderedItemUserOrder_FK" table="ordereditem" schema="" catalog="eshop" columns="userOrderId"/>
+      <index name="Order_FK" unique="false" columns="userId"/>
+      <index name="UserOrderIndexByUserOrderId" unique="false" columns="userOrderId"/>
+    </table>
+    <table name="users" schema="" catalog="eshop" type="TABLE">
+      <column name="userId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="loginName" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="enPassword" sqlType="VARCHAR" precision="13" scale="0" nullable="false" jdbcType="12"/>
+      <column name="firstName" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="lastName" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="userId"/>
+      <exported-key name="Order_FK" table="userorder" schema="" catalog="eshop" columns="userId"/>
+      <index name="LoginNameUniqueKey" unique="true" columns="loginName"/>
+      <index name="UserIndexByLoginName" unique="false" columns="loginName"/>
+      <index name="UserIndexByUserId" unique="false" columns="userId"/>
+    </table>
+  </data-source>
+</component>
