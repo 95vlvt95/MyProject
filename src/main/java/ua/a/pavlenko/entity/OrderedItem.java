@@ -22,7 +22,7 @@ public class OrderedItem implements Serializable{
     private int amount;
 
     @Column
-    private float price;
+    private double price;
 
     public static final long serialVersionUID = 1L;
 
@@ -62,19 +62,19 @@ public class OrderedItem implements Serializable{
     }
 
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
     public OrderedItem(){}
 
-    public OrderedItem(Item item, UserOrder userOrder, int amount, float price){
-        this.itemId = item;
-        this.userOrderId = userOrder;
+    public OrderedItem(Item itemId, UserOrder userOrderId, int amount, double price){
+        this.itemId = itemId;
+        this.userOrderId = userOrderId;
         this.amount = amount;
         this.price = price;
     }

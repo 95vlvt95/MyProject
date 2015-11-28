@@ -11,9 +11,6 @@ import ua.a.pavlenko.service.CategoryService;
 
 import java.util.List;
 
-/**
- * Created by Anton on 28.11.2015.
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/spring-config.xml"})

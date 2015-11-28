@@ -20,7 +20,7 @@ public class Item implements Serializable {
     private String name;
 
     @Column
-    private float price;
+    private double price;
 
     @Column
     private String imageURL1;
@@ -66,11 +66,11 @@ public class Item implements Serializable {
         this.name = name;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -124,13 +124,13 @@ public class Item implements Serializable {
 
     public Item(){}
 
-    public Item(Category categoryId, String name, float price){
+    public Item(Category categoryId, String name, double price){
         this.categoryId = categoryId;
         this.name = name;
         this.price = price;
     }
 
-    public Item(Category categoryId, String name, float price, String imageURL1,
+    public Item(Category categoryId, String name, double price, String imageURL1,
                 String imageURL2, String imageURL3, String imageURL4, String imageURL5){
         //this(categoryId, name, price);
         this.categoryId = categoryId;
